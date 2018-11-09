@@ -1,30 +1,24 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { Route, Link, Switch } from 'react-router-dom';
+import Home from './Home';
+import About from './About';
 
-class App extends React.Component {
-  static propTypes = {
-    initialText: PropTypes.string.isRequired
-  }
+const App = (props) => {
+  return (
+    <div>
+      <ul>
+        <li><Link to="/">Home</Link></li>
+        <li><Link to="/about">About</Link></li>
+      </ul>
 
-  constructor(props) {
-    super(props);
-    this.state = { text: this.props.initialText };
-  }
+      <hr />
 
-  onButtonClick(event) {
-    event.preventDefault();
-
-    this.setState({ text: 'changed in the browser!' });
-  }
-
-  render() {
-    return (
-      <div>
-        <p>{this.state.text}</p>
-        <button onClick={this.onButtonClick.bind(this)}>change text!</button>
-      </div>
-    );
-  }
-}
+      <Switch>
+        <Route path="/about" component={About} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </div>
+  );
+};
 
 export default App;

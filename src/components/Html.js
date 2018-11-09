@@ -6,7 +6,7 @@ class Html extends React.Component {
     children: PropTypes.node.isRequired,
     initialState: PropTypes.object,
     scripts: PropTypes.array
-  }
+  };
 
   render () {
     const { children, initialState, scripts } = this.props;
